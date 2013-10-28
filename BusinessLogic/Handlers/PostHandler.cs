@@ -18,6 +18,11 @@ namespace BusinessLogic.Handlers
             return rep.Posts();
         }
 
+        public IList<Post> PostsForPage(int pageNumber, int pageSize)
+        {
+            return rep.PostsForPage(pageNumber, pageSize);
+        }
+
         public IList<Post> PostsForTag(string tagSlug)
         {
             return rep.PostsForTag(tagSlug);

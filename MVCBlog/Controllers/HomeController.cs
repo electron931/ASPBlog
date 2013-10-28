@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace MVCBlog.Controllers
 {
     public class HomeController : Controller
@@ -11,6 +12,7 @@ namespace MVCBlog.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home";
+
             return View();
         }
 

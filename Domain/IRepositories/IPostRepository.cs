@@ -7,6 +7,7 @@ namespace Domain.IRepositories
     public interface IPostRepository : IBaseRepository<Post>
     {
         IList<Post> Posts();
+        IList<Post> PostsForPage(int pageNumber, int pageSize);
         IList<Post> PostsForTag(string tagSlug);
         IList<Post> PostsForCategory(string categorySlug);
         IList<Post> PostsForSearch(string search);

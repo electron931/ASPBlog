@@ -1,0 +1,43 @@
+﻿@model MVCBlog.Models.PostViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container" style="margin-top: 30px;">
+    <div class="row">
+        @foreach (var post in @Model.Posts)
+        {  
+        <div class="columns">
+		        <div class="post_item">
+		
+			        <div class="post-body">
+				        <a href="page.html">
+					        <div class="large_thumb thumb_hover">
+						        <div class="img_wrapper">
+							        <img class="thumb" src=@Url.Content("~/Content/themes/base/images/pic1.jpg")>
+						        </div>
+					        </div>
+				        </a>
+				        <h3 class="post_item_title">
+					        <a rel="bookmark" href="page.html">@post.Title</a>
+				        </h3>
+				        <div class="post_meta">
+					        <span class="user">by <span style="color: #E74C3C;">@post.Author.Login</span></span>
+			                <span class="time">@post.PostedOn</span>
+			            </div>
+				        <div class="post_item_inner">
+					        <p>@post.ShortDescription</p>
+					        <a class="button normal" rel="bookmark" href="page.html">Read More</a>
+																
+					        <div class="clear"></div>
+				        </div>										
+			        </div>
+	                 <div class="clear"></div>		
+		        </div>
+   
+	        </div>
+        }
+
+         <div class="clear"></div>
+    </div>
+</div>

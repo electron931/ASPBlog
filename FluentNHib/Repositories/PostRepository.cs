@@ -23,6 +23,20 @@ namespace FluentNHib.Repositories
             return query.ToFuture().ToList();
         }
 
+        public IList<Post> PostsForPage(int pageNumber, int pageSize)
+        {
+            var query = _session.Query<Post>()
+                            .Where(p => p.Published)
+                            .OrderByDescending(p => p.PostedOn)
+                            .Skip(pageNumber * pageSize)
+                            .Take(pageSize)
+                            .Fetch(p => p.Category);
+
+            query.FetchMany(p => p.Tags).ToFuture();
+
+            return query.ToFuture().ToList();
+        }
+
         public IList<Post> PostsForCategory(string categorySlug)
         {
             var query = _session.Query<Post>()
