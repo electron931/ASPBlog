@@ -1232,20 +1232,19 @@ html[xmlns] .slides {
 #sidebar-wrapper {
 	display:none;
 }
-.column,.columns {
-	float:left;
-	min-height:1px;
-	padding:0 1%;
-	position:relative;
-	margin-bottom:30px;
-}
 .columns {
-	width:33.2%;
+	float: left;
+	min-height:1px;
+	padding:0 15px;
+	margin-bottom:30px;
+    width:100%;
+    position: relative;
 }
 
 .row .twelve {
 	width:100%;
 }
+
 .container {
 	width:1060px;
 	max-width:100%;
@@ -1266,13 +1265,7 @@ html[xmlns] .slides {
 	min-width:0;
 	margin:0 -15px;
 }
-.column,.columns {
-	float:left;
-	min-height:1px;
-	padding:0 15px;
-	position:relative;
-	margin-bottom:30px;
-}
+
 .column.end, .columns.end {
 	float:right;
 }
@@ -1456,14 +1449,19 @@ object, embed, iframe {
     }
 }
 
+.megacolumn {
+    float:left; width: 33.2%;
+}
+
 @media only screen and (max-width: 767px) {
-	.columns {
+	.megacolumn {
 		width:100%;
 		max-width: 500px;
 		float:none;
-		padding:0 14px;
+		padding:0;
 		margin: 0 auto;
 		margin-bottom:14px;
 	}
+    
 }
 

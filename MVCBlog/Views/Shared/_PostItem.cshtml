@@ -1,0 +1,45 @@
+﻿@model MVCBlog.Models.PostViewModel
+
+@{
+  int i = 1;
+  int j = 1;
+}
+@foreach (var post in @Model.Posts)
+{  
+<div class="megacolumn"+ j++>
+    @if (j > 3)
+    {
+        j = 1;
+    }
+    <div class="columns">
+        <div class="post_item">
+	        <div class="post-body">
+		        <a href="page.html">
+			        <div class="large_thumb thumb_hover">
+				        <div class="img_wrapper">
+					        <img class="thumb" src=@Url.Content("~/Content/themes/base/images/pic" + i++ + ".jpg")>
+                    
+                            @if (i > 9)
+                            {
+                                i = 1;
+                            }
+                                     
+						</div>
+				    </div>
+		        </a>
+		        <h3 class="post_item_title">
+			        <a rel="bookmark" href="page.html">@post.Title</a>
+		        </h3>
+		        <div class="post_meta">
+			        <span class="user">by <span style="color: #E74C3C;">@post.Author.Login</span></span>
+		            <span class="time">@post.PostedOn.ToShortDateString()</span>
+	           </div>
+			   <div class="post_item_inner">
+			       <p>@post.ShortDescription</p>
+		           <a class="button normal" rel="bookmark" href="page.html">Read More</a>												
+			   </div>										
+		   </div>
+        </div>
+    </div>
+</div>
+}

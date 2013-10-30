@@ -80,4 +80,6 @@ $(document).ready(function () {
         $(".sub-menu").slideDown(500);
     });
 
+    setInterval(nextSlide, 5000);
+
 });

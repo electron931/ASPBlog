@@ -31,7 +31,7 @@ namespace TestConsoleApplication
 
             IList<Post> posts = postHandler.Posts();
             foreach (var post in posts)
-                Console.WriteLine(post.Id + ". " + post.Author.Login);
+                Console.WriteLine(post.Id + ". " + post.Author.Login + "  " + post.PostedOn.ToShortDateString());
 
             TagHandler tagHandler = new TagHandler();
 
