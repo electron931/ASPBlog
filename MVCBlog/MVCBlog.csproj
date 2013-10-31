@@ -105,7 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -143,15 +142,15 @@
     <Content Include="Content\themes\base\images\nav-prev.png" />
     <Content Include="Content\themes\base\images\pattern-header.png" />
     <Content Include="Content\themes\base\images\pattern.png" />
-    <Content Include="Content\themes\base\images\pic1.jpg" />
-    <Content Include="Content\themes\base\images\pic2.jpg" />
-    <Content Include="Content\themes\base\images\pic3.jpg" />
-    <Content Include="Content\themes\base\images\pic4.jpg" />
-    <Content Include="Content\themes\base\images\pic5.jpg" />
-    <Content Include="Content\themes\base\images\pic6.jpg" />
-    <Content Include="Content\themes\base\images\pic7.jpg" />
-    <Content Include="Content\themes\base\images\pic8.jpg" />
-    <Content Include="Content\themes\base\images\pic9.jpg" />
+    <Content Include="Content\themes\base\images\posts\pic1.jpg" />
+    <Content Include="Content\themes\base\images\posts\pic2.jpg" />
+    <Content Include="Content\themes\base\images\posts\pic3.jpg" />
+    <Content Include="Content\themes\base\images\posts\pic4.jpg" />
+    <Content Include="Content\themes\base\images\posts\pic5.jpg" />
+    <Content Include="Content\themes\base\images\posts\pic6.jpg" />
+    <Content Include="Content\themes\base\images\posts\pic7.jpg" />
+    <Content Include="Content\themes\base\images\posts\pic8.jpg" />
+    <Content Include="Content\themes\base\images\posts\pic9.jpg" />
     <Content Include="Content\themes\base\images\pinterest.png" />
     <Content Include="Content\themes\base\images\quote.png" />
     <Content Include="Content\themes\base\images\retina_wood.png" />
@@ -204,9 +203,6 @@
       <Project>{489753ef-a9d2-426c-8945-77c854061c8d}</Project>
       <Name>Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Post\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />

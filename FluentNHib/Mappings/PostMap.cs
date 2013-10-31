@@ -20,6 +20,8 @@ namespace FluentNHib.Mappings
 
             Map(x => x.UrlSlug).Length(200).Not.Nullable();
 
+            Map(x => x.Image).Length(100).Not.Nullable();
+
             Map(x => x.Published).Not.Nullable();
 
             Map(x => x.PostedOn).Not.Nullable();

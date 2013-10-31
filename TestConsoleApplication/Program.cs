@@ -16,7 +16,7 @@ namespace TestConsoleApplication
             logger.Debug("Application start");
 
             CategoryHandler catHandler = new CategoryHandler();
-
+            
             IList<Category> categories = catHandler.Categories();
             foreach (var category in categories)
                 Console.WriteLine(category.Id + ". " + category.Name);
@@ -47,7 +47,7 @@ namespace TestConsoleApplication
 
 
             logger.Debug("Application loaded succesfully");
-
+            
             Console.ReadLine();
         }
     }

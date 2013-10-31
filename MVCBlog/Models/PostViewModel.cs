@@ -13,7 +13,7 @@ namespace MVCBlog.Models
         public PostViewModel(PostHandler _post, int page, int pageLimit)
         {
             Posts = _post.PostsForPage(page - 1, pageLimit);
-            TotalPosts = _post.TotalPosts();
+            TotalPosts = Posts.Count;
         }
  
         public IList<Post> Posts { get; private set; }

@@ -21,6 +21,9 @@ namespace Domain.Entities
         public virtual string UrlSlug
         { get; set; }
 
+        public virtual string Image
+        { get; set; }
+
         public virtual bool Published
         { get; set; }
 

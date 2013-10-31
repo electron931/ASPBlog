@@ -2,7 +2,25 @@
 
 @{
     ViewBag.Title = "Home";
+    bool isSecondColumn = false;
+    int i = 0;
+    int n = @Model.TotalPosts / 3;
+    int remainder = @Model.TotalPosts % 3;
 }
+    @switch (remainder)
+    {
+        case 0:
+            remainder = 0;
+            break;
+        case 1:
+            remainder = 1;
+            break;
+        case 2:
+            remainder = 1;
+            isSecondColumn = true;
+            break;
+    }
+
 
 <div class="slider" style="overflow:hidden;">
 	<div class="fullwidth flexslider" id="homeslider">
@@ -80,126 +98,48 @@
 
 <div class="container" style="margin-top: 30px;">
     <div class="row">
-@{
-  int i = 1;
-}
+
         <div class="megacolumn">
 
-            @for (var j = 0; j < 3; j++)
-            {  
-    <div class="columns">
-        <div class="post_item">
-	        <div class="post-body">
-		        <a href="page.html">
-			        <div class="large_thumb thumb_hover">
-				        <div class="img_wrapper">
-					        <img class="thumb" src=@Url.Content("~/Content/themes/base/images/pic" + i + ".jpg")>
-                            @{i += 3;}
-                            @if (i > 9)
-                            {
-                                i = 1;
-                            }
-                                     
-						</div>
-				    </div>
-		        </a>
-		        <h3 class="post_item_title">
-			        <a rel="bookmark" href="page.html">@Model.Posts[j].Title</a>
-		        </h3>
-		        <div class="post_meta">
-			        <span class="user">by <span style="color: #E74C3C;">@Model.Posts[j].Author.Login</span></span>
-		            <span class="time">@Model.Posts[j].PostedOn.ToShortDateString()</span>
-	           </div>
-			   <div class="post_item_inner">
-			       <p>@Model.Posts[j].ShortDescription</p>
-		           <a class="button normal" rel="bookmark" href="page.html">Read More</a>												
-			   </div>										
-		   </div>
-        </div>
-    </div>
-
+            @for (i = 0; i < n + remainder; i++)
+            {
+                ViewBag.Number = i;
+                @Html.Partial("_PostItem");
             }
-            </div>
-        @{i = 2;}
+            
+        </div>
+         
+        <div class="megacolumn">
+            
+            @{int k = i + n;}
+            @if (isSecondColumn)
+            {
+                k += remainder;
+            }
+      
+            @for(; i < k; i++)
+            {
+                ViewBag.Number = i;
+                @Html.Partial("_PostItem");
+            }
+            
+        </div>
+      
+          
         <div class="megacolumn">
 
-            @for (var j = 3; j < 6; j++)
-            {  
-    <div class="columns">
-        <div class="post_item">
-	        <div class="post-body">
-		        <a href="page.html">
-			        <div class="large_thumb thumb_hover">
-				        <div class="img_wrapper">
-					        <img class="thumb" src=@Url.Content("~/Content/themes/base/images/pic" + i + ".jpg")>
-                             @{i += 3;}
-                            @if (i > 9)
-                            {
-                                i = 1;
-                            }
-                                     
-						</div>
-				    </div>
-		        </a>
-		        <h3 class="post_item_title">
-			        <a rel="bookmark" href="page.html">@Model.Posts[j].Title</a>
-		        </h3>
-		        <div class="post_meta">
-			        <span class="user">by <span style="color: #E74C3C;">@Model.Posts[j].Author.Login</span></span>
-		            <span class="time">@Model.Posts[j].PostedOn.ToShortDateString()</span>
-	           </div>
-			   <div class="post_item_inner">
-			       <p>@Model.Posts[j].ShortDescription</p>
-		           <a class="button normal" rel="bookmark" href="page.html">Read More</a>												
-			   </div>										
-		   </div>
-        </div>
-    </div>
-
+            @for (; i < @Model.TotalPosts; i++)
+            {
+                ViewBag.Number = i;
+                @Html.Partial("_PostItem");
             }
+           
+        </div>
+              
+
+        <div class="clear"></div>
+    </div>
 </div>
-          @{i = 3;}
-        <div class="megacolumn">
-
-            @for (var j = 6; j < @Model.Posts.Count; j++)
-            {  
-    <div class="columns">
-        <div class="post_item">
-	        <div class="post-body">
-		        <a href="page.html">
-			        <div class="large_thumb thumb_hover">
-				        <div class="img_wrapper">
-					        <img class="thumb" src=@Url.Content("~/Content/themes/base/images/pic" + i + ".jpg")>
-                             @{i += 3;}
-                            @if (i > 9)
-                            {
-                                i = 1;
-                            }
-                                     
-						</div>
-				    </div>
-		        </a>
-		        <h3 class="post_item_title">
-			        <a rel="bookmark" href="page.html">@Model.Posts[j].Title</a>
-		        </h3>
-		        <div class="post_meta">
-			        <span class="user">by <span style="color: #E74C3C;">@Model.Posts[j].Author.Login</span></span>
-		            <span class="time">@Model.Posts[j].PostedOn.ToShortDateString()</span>
-	           </div>
-			   <div class="post_item_inner">
-			       <p>@Model.Posts[j].ShortDescription</p>
-		           <a class="button normal" rel="bookmark" href="page.html">Read More</a>												
-			   </div>										
-		   </div>
-        </div>
-    </div>
-            }
-            </div>
-
-
-    <div class="clear"></div>
-</div>
-    </div>
 
 
 
