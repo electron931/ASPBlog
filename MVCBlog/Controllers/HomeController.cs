@@ -18,10 +18,11 @@ namespace MVCBlog.Controllers
             _post = new PostHandler();
         }
 
-        public ViewResult Index()
+        public ViewResult Index(int page = 1)
         {
-            var postModel = new PostViewModel(_post, 1, postsForMainPage);
-            
+            var postModel = new PostViewModel(_post, page, postsForMainPage);
+            ViewBag.Page = page;
+    
             return View(postModel);
         }
 

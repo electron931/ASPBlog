@@ -4,8 +4,8 @@
     ViewBag.Title = "Home";
     bool isSecondColumn = false;
     int i = 0;
-    int n = @Model.TotalPosts / 3;
-    int remainder = @Model.TotalPosts % 3;
+    int n = @Model.TotalPostsForPage / 3;
+    int remainder = @Model.TotalPostsForPage % 3;
 }
     @switch (remainder)
     {
@@ -95,6 +95,10 @@
 	</div>
 </div>
 
+@if (@Model.Posts.Count == 0)
+{
+    <h2>Sorry, posts not found...</h2>
+}
 
 <div class="container" style="margin-top: 30px;">
     <div class="row">
@@ -128,7 +132,7 @@
           
         <div class="megacolumn">
 
-            @for (; i < @Model.TotalPosts; i++)
+            @for (; i < @Model.TotalPostsForPage; i++)
             {
                 ViewBag.Number = i;
                 @Html.Partial("_PostItem");
@@ -138,7 +142,13 @@
               
 
         <div class="clear"></div>
+
     </div>
+    @if (@Model.Posts.Count != 0)
+    {
+        @Html.Partial("_Pager")
+    }
+
 </div>
 
 

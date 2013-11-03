@@ -1453,6 +1453,56 @@ object, embed, iframe {
     float:left; width: 33.2%;
 }
 
+
+
+.pagination {
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.pagination ul {
+    height: 30px;
+}
+
+.pagination ol {
+    margin: 0 auto;
+    width: 60%;
+    height: 30px;
+    padding: 0;
+}
+
+.pagination ul li, .pagination ol li {
+    float: left;
+    font-size: 17px;
+    width: 28px;
+    margin: 0 5px;
+    border-radius: 20px;
+}
+
+.pagination ul li a, .pagination ol li a {
+    display: block;
+    text-align: center;
+}
+
+.pagination ol li:first-child {
+    width: 60px;
+    float: left;
+}
+
+.pagination ol li:last-child {
+    width: 60px;
+    float: right;
+}
+
+.currentPage a {
+    color: #fff;
+}
+
+.currentPage {
+    background-color: #E24A3A;
+}
+
 @media only screen and (max-width: 767px) {
 	.megacolumn {
 		width:100%;
@@ -1462,6 +1512,12 @@ object, embed, iframe {
 		margin: 0 auto;
 		margin-bottom:14px;
 	}
-    
-}
 
+    .pagination {
+        width: 90%;
+    }
+
+    .pagination ol {
+        width: 80%;
+    }
+}

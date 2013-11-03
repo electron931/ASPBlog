@@ -1,0 +1,134 @@
+﻿@model MVCBlog.Models.PostViewModel
+
+@{
+    int totalPages = @Model.TotalPosts / @Model.PageLimit;
+    if ((@Model.TotalPosts % @Model.PageLimit) != 0)
+        totalPages += 1;
+}
+
+@*
+    all numbers below needed for correct pagination
+    they have no effect on the external parts of the app
+*@
+
+@if (totalPages > 8)
+{
+    <div class="pagination">
+        <ol>
+            @if (ViewBag.Page != 1)
+            {
+                <li>@Html.ActionLink("← prev", "Index", "Home", new { page = ViewBag.Page - 1 }, new { title = "prev" })</li>
+            }
+            else 
+            {
+                <li></li>
+            }
+            @if (ViewBag.Page < totalPages)
+            {
+                <li>@Html.ActionLink("next →", "Index", "Home", new { page = ViewBag.Page + 1 }, new { title = "next" })</li>
+            }
+            else 
+            {
+                <li></li>
+            }
+        </ol>
+        <ul>
+            @if (totalPages > 9 && ViewBag.Page > 5)
+            {
+                <li>@Html.ActionLink("←", "Index", "Home", new { page = 1 }, new { title = "First Page" })</li>
+            }
+            @if (ViewBag.Page > 4 && ViewBag.Page < totalPages - 4)
+            {
+                for (int i = ViewBag.Page - 4; i <= ViewBag.Page + 4; i++)
+                {
+                    if (i > totalPages)
+                    {
+                        break;
+                    }
+                    if (i != ViewBag.Page)
+                    {
+                        <li>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                    }
+                    else 
+                    {
+                        <li class="currentPage">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                    }
+                 }
+             }
+             else
+             {
+                if (ViewBag.Page <= 4)
+                {
+                     for (int i = 1; i <= 8; i++)
+                     {
+                         if (i != ViewBag.Page)
+                         {
+                             <li>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                         }
+                         else 
+                         {
+                             <li class="currentPage">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                         }
+                     }
+                 }
+                 else
+                 {
+                    for (int i = totalPages - 8; i <= totalPages; i++)
+                    {
+                        if (i != ViewBag.Page)
+                        {
+                            <li>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                        }
+                        else 
+                        {
+                            <li class="currentPage">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                        }
+                    }
+                 }
+             }
+     
+       
+             @if (ViewBag.Page < totalPages - 4)
+             {
+                 <li>@Html.ActionLink("→", "Index", "Home", new { page = totalPages }, new { title = "Last Page" })</li>
+             }
+        
+        </ul>
+    </div>
+}
+else
+{
+    <div class="pagination">
+        <ol>
+            @if (ViewBag.Page != 1)
+            {
+                <li>@Html.ActionLink("← prev", "Index", "Home", new { page = ViewBag.Page - 1 }, new { title = "prev" })</li>
+            }
+            else 
+            {
+                <li></li>
+            }
+            @if (ViewBag.Page < totalPages)
+            {
+                <li>@Html.ActionLink("next →", "Index", "Home", new { page = ViewBag.Page + 1 }, new { title = "next" })</li>
+            }
+            else 
+            {
+                <li></li>
+            }
+        </ol>
+        <ul>
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                if (i != ViewBag.Page)
+                {
+                   <li>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                }
+                else 
+                {
+                   <li class="currentPage">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                }
+            }     
+        </ul>
+    </div>
+}
