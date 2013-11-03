@@ -27,130 +27,14 @@
    <![endif]-->
  
     <!-- Header -->
-    <div class="top_wrapper">
-			<div id="header-wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="twelve columns">
-							<div class="header_left">
-								<div class="header section" id="header">
-									<div class="widget Header" id="Header1">
-										<div id="header-inner">
-											<a href="index.html" style="display: block">
-												<img alt="Sight" height="50px" id="Header1_headerimg"
-													 src=@Url.Content("~/Content/themes/base/images/logo.png")
-                                                     style="display: block" width="110px;">
-											</a>
-										</div>
-									</div>
-								</div>
-								<div class="socials">
-									<a class="facebook" href="#" title="Facebook">Facebook</a>
-									<a class="twitter" href="#" title="Twitter">Twitter</a>
-									<a class="google_plus" href="#" title="Google_plus">Google_plus</a>
-									<a class="pinterest" href="#" title="Pinterest">Pinterest</a>
-									<a class="vimeo" href="#" title="Vimeo">Vimeo</a>
-									<a class="rss" href="#" title="RSS">RSS</a>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="header_right">
-								<div class="menu-navigation-container" id="top_menu">
-									<ul class="sf-menu sf-js-enabled sf-shadow" id="mainmenu">
-										<li class="current-menu-item"><a href="#">Homepage</a></li>
-										<li><a href="#" class="sf-with-ul">Info<span class="sf-sub-indicator"> »</span></a>
-											<ul class="sub-menu" style="display: none; visibility: hidden;">
-												<li><a href="#" class="sf-with-ul">Categories
-													<span class="sf-sub-indicator"> »</span></a>
-													<ul class="sub-menu" style="display: none; visibility: hidden;">
-														<li><a href="#">Programming</a></li>
-														<li><a href="#">Humor</a></li>
-														<li><a href="#">Interesting</a></li>
-														<li><a href="#">Something else</a></li>
-													</ul>
-												</li>
-                                                <li><a href="#">Tags</a></li>
-												<li><a href="#">Archive</a></li>
-												<li><a href="#">Authors</a></li>
-												<li><a href="#">Help</a></li>
-												<li><a href="#">Read this</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Contacts</a></li>
-										<li><a href="#">About</a></li>
-									</ul>
-									
-									<select class="select_menu" title="Navigation ..." style="z-index: 10; opacity: 0;">
-										<option value="#">Navigation ...</option>
-										<option value="#">&nbsp;Homepage</option>
-										<option value="#">&nbsp;Info »</option>
-										<option value="#">–&nbsp;Categories »</option>
-										<option value="#">––&nbsp;Programming</option>
-										<option value="#">––&nbsp;Humor</option>
-										<option value="#">––&nbsp;Interesting</option>
-										<option value="#">––&nbsp;Something else</option>
-                                        <option value="#">–&nbsp;Tags</option>
-										<option value="#">–&nbsp;Archive</option>
-										<option value="#">–&nbsp;Authors</option>
-										<option value="#">–&nbsp;Help</option>
-										<option value="#">–&nbsp;Read this</option>
-										<option value="#">&nbsp;Contacts</option>
-										<option value="#">&nbsp;About</option>
-									</select>
-
-									<span class="nav_select">Navigation ...
-										<span class="menu_icon_wrapper">
-											<span class="menu_icon"></span>
-										</span>
-									</span>
-									
-									<div class="header_search">
-										<div class="search_zoom search_btn"></div>
-										<div class="search_box">
-											<form action="/search" id="searchform" method="get">
-												<input class="search_input" id="s" name="q"
-													   placeholder="Type &amp; hit enter to search" type="text">
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>
+    @Html.Partial("_Header")
  
  
     <!-- Site Content -->
-      @RenderBody()
+    @RenderBody()
       
      <!-- Footer -->
-    <div id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="twelve columns wrapper">
-					Copyright © 2013 
-					<a href="http://sight-soratemplates.blogspot.in/" id="copyright">Sight</a>
-					<a class="copyrighted"
-                         style="font-weight: normal;
-                                text-indent: 0 !important;
-                                display: inline !important;
-                                position: relative !important; 
-                                visibility: visible !important; 
-                                z-index: 9999 !important; 
-                                font-size: 12px !important; 
-                                color: #666666 !important;" 
-                         href="http://www.soratemplates.com">. Blogger Theme by 
-                        <span style="font-weight: bold; color: #E74C3C !important;">SoraTemplates</span>
-					</a> and 
-					<a href="http://www.mybloggerthemes.com">Blogger Templates</a> - 
-					<a href="http://www.softwanime.com">Anime Soundtrack</a>.
-				</div>
-			</div>
-		</div>
-	</div>
+    @Html.Partial("_Footer")
 
 </body>
 </html>
