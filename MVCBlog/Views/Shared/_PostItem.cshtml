@@ -1,27 +1,38 @@
-﻿@model MVCBlog.Models.PostViewModel
+﻿@model Domain.Entities.Post
+@using BusinessLogic
 
     <div class="columns">
         <div class="post_item">
 	        <div class="post-body">
-		        <a href="page.html">
+		        <a href="/posts/@Model.Category.UrlSlug/@Model.UrlSlug">
 			        <div class="large_thumb thumb_hover">
 				        <div class="img_wrapper">
-					        <img class="thumb" src=@Url.Content(@Model.Posts[ViewBag.Number].Image)>        
+					        <img class="thumb" src="@Url.Content(@Model.Image)">        
 						</div>
 				    </div>
 		        </a>
 		        <h3 class="post_item_title">
-			        <a rel="bookmark" href="page.html">@Model.Posts[ViewBag.Number].Title</a>
+			        <a rel="bookmark"
+                       href="@Url.Action("GetPost", "Post", new 
+                                                        {
+                                                            categorySlug = @Model.Category.UrlSlug,
+                                                            postSlug = @Model.UrlSlug
+                                                        })">@Model.Title</a>
 		        </h3>
 		        <div class="post_meta">
-			        <span class="user">by <span style="color: #E74C3C;">@Model.Posts[ViewBag.Number].Author.Login</span></span>
-		            <span class="time">@Model.Posts[ViewBag.Number].PostedOn.ToShortDateString()</span>
-	           </div>
-			   <div class="post_item_inner">
-			       <p>@Model.Posts[ViewBag.Number].ShortDescription</p>
-		           <a class="button normal" rel="bookmark" href="page.html">Read More</a>												
-			   </div>										
+			        <span class="user">by <span style="color: #E74C3C;">@Model.Author.Login</span></span>
+		            <span class="time">@Model.PostedOn.ToConfigLocalTime()</span>
+	            </div>
+			    <div class="post_item_inner">
+			       <p>@Model.ShortDescription</p>
+		           <a class="button normal"
+                      rel="bookmark"
+                      href="@Url.Action("GetPost", "Post", new 
+                                                        {
+                                                            categorySlug = @Model.Category.UrlSlug,
+                                                            postSlug = @Model.UrlSlug
+                                                        })">Read More</a>												
+			    </div>										
 		   </div>
         </div>
     </div>
-

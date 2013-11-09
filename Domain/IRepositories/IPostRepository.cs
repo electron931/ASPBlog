@@ -7,9 +7,9 @@ namespace Domain.IRepositories
     public interface IPostRepository : IBaseRepository<Post>
     {
         IList<Post> Posts();
-        IList<Post> PostsForPage(int pageNumber, int pageSize);
-        IList<Post> PostsForTag(string tagSlug);
-        IList<Post> PostsForCategory(string categorySlug);
+        IList<Post> PostsForPage(int pageNumber, int pageLimit);
+        IList<Post> PostsForTag(string tagSlug, int pageNumber, int pageLimit);
+        IList<Post> PostsForCategory(string categorySlug, int pageNumber, int pageLimit);
         IList<Post> PostsForSearch(string search);
         IList<Post> UserPosts(int userId);
 
@@ -21,6 +21,7 @@ namespace Domain.IRepositories
 
         IList<Post> Posts(string sortColumn, bool sortByAscending);
         Post Post(int year, int month, string titleSlug);
+        Post Post(string categorySlug, string postSlug);
         Post Post(int id);
     }
 }

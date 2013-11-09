@@ -1,0 +1,6 @@
+﻿@model MVCBlog.Models.TagViewModel
+
+<div class="addInfo">
+    <h1>Latest posts tagged on "@Model.Tag.Name":</h1>
+</div>
+@Html.Partial("_List", @Model)

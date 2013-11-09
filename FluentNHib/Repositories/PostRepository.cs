@@ -23,13 +23,13 @@ namespace FluentNHib.Repositories
             return query.ToFuture().ToList();
         }
 
-        public IList<Post> PostsForPage(int pageNumber, int pageSize)
+        public IList<Post> PostsForPage(int pageNumber, int pageLimit)
         {
             var query = _session.Query<Post>()
                             .Where(p => p.Published)
                             .OrderByDescending(p => p.PostedOn)
-                            .Skip(pageNumber * pageSize)
-                            .Take(pageSize)
+                            .Skip(pageNumber * pageLimit)
+                            .Take(pageLimit)
                             .Fetch(p => p.Category);
 
             query.FetchMany(p => p.Tags).ToFuture();
@@ -37,11 +37,13 @@ namespace FluentNHib.Repositories
             return query.ToFuture().ToList();
         }
 
-        public IList<Post> PostsForCategory(string categorySlug)
+        public IList<Post> PostsForCategory(string categorySlug, int pageNumber, int pageLimit)
         {
             var query = _session.Query<Post>()
                                 .Where(p => p.Published && p.Category.UrlSlug.Equals(categorySlug))
                                 .OrderByDescending(p => p.PostedOn)
+                                .Skip(pageNumber * pageLimit)
+                                .Take(pageLimit)
                                 .Fetch(p => p.Category);
 
             query.FetchMany(p => p.Tags).ToFuture();
@@ -49,11 +51,13 @@ namespace FluentNHib.Repositories
             return query.ToFuture().ToList();
         }
 
-        public IList<Post> PostsForTag(string tagSlug)
+        public IList<Post> PostsForTag(string tagSlug, int pageNumber, int pageLimit)
         {
             var query = _session.Query<Post>()
                                .Where(p => p.Published && p.Tags.Any(t => t.UrlSlug.Equals(tagSlug)))
                                .OrderByDescending(p => p.PostedOn)
+                               .Skip(pageNumber * pageLimit)
+                               .Take(pageLimit)
                                .Fetch(p => p.Category);
 
             query.FetchMany(p => p.Tags).ToFuture();
@@ -174,6 +178,9 @@ namespace FluentNHib.Repositories
                     break;
             }
 
+            if (query == null)
+                return null;
+
             query.FetchMany(p => p.Tags).ToFuture();
 
             return query.ToFuture().ToList();
@@ -185,7 +192,24 @@ namespace FluentNHib.Repositories
                            .Where(p => p.PostedOn.Year == year && p.PostedOn.Month == month && p.UrlSlug.Equals(titleSlug))
                            .Fetch(p => p.Category);
 
+            if (query == null)
+                return null;
+
             query.FetchMany(p => p.Tags).ToFuture();
+
+            return query.ToFuture().Single();
+        }
+
+        public Post Post(string categorySlug, string titleSlug)
+        {
+            var query = _session.Query<Post>()
+                           .Where(p => p.Category.UrlSlug == categorySlug && p.UrlSlug.Equals(titleSlug));
+
+            if (query == null)
+                return null;
+
+            query.FetchMany(p => p.Tags).ToFuture();
+
 
             return query.ToFuture().Single();
         }

@@ -38,12 +38,11 @@ h1, h2, h3, h4, h5 {
 	float: right;
 	width: 300px;
 }
-.slider { 
-	margin-bottom: 30px; 
+.container { 
+	margin-top: 30px; 
 }
 #header-wrapper { 
 	background: #34495e url(../images/pattern-header.png) repeat-x;
-	padding-top: 30px;
 	border-top:5px solid #e74c3c;
 	-moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
 	-webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
@@ -1248,7 +1247,7 @@ html[xmlns] .slides {
 .container {
 	width:1060px;
 	max-width:100%;
-	margin:0 auto;
+	margin:30px auto 0 auto;
 }
 .row .column,.row .columns {
 	-webkit-box-sizing:border-box;
@@ -1295,11 +1294,8 @@ object, embed, iframe {
 		padding:0 10px;
 		margin-bottom:20px;
 	}
-	.slider {
-		margin-bottom:20px;
-	}
-	#header-wrapper {
-		padding-top:20px;
+	.container {
+		margin-top:20px;
 	}
 	#header-wrapper .socials {
 		display:none;
@@ -1363,11 +1359,8 @@ object, embed, iframe {
 	.column:after, .columns:after {
 		clear:both;
 	}
-	.slider {
-		margin-bottom:14px;
-	}
-	#header-wrapper {
-		padding-top:14px;
+	.container {
+		margin-top:14px;
 	}
 	#header-wrapper .header_left, #header-wrapper .header_right {
 		float:none;
@@ -1503,6 +1496,12 @@ object, embed, iframe {
     background-color: #E24A3A;
 }
 
+.addInfo {
+    width: 1060px;
+    max-width: 100%;
+    margin: 30px auto 0 auto;
+}
+
 @media only screen and (max-width: 767px) {
 	.megacolumn {
 		width:100%;
@@ -1521,3 +1520,6 @@ object, embed, iframe {
         width: 80%;
     }
 }
+
+.
+

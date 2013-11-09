@@ -1,0 +1,15 @@
+﻿@using Domain.Entities
+@model IList<Tag>
+
+
+
+<div class="post_tag">
+Labels:
+
+
+    @foreach (var tag in @Model)
+    {
+        <a href="/tag/@tag.UrlSlug" title="See all posts in @tag.Name">@tag.Name</a>
+    }
+
+</div>

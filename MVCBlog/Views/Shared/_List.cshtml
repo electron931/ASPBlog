@@ -1,7 +1,6 @@
-﻿@model MVCBlog.Models.PostViewModel
+﻿@model MVCBlog.Models.BaseViewModel
 
 @{
-    ViewBag.Title = "Home";
     bool isSecondColumn = false;
     int i = 0;
     int n = @Model.TotalPostsForPage / 3;
@@ -22,8 +21,6 @@
     }
 
 
-@Html.Partial("_Slider")
-
 @if (@Model.Posts.Count == 0)
 {
     <h2>Sorry, posts not found...</h2>
@@ -36,8 +33,7 @@
 
             @for (i = 0; i < n + remainder; i++)
             {
-                ViewBag.Number = i;
-                @Html.Partial("_PostItem");
+                @Html.Partial("_PostItem", @Model.Posts[i]);
             }
             
         </div>
@@ -52,8 +48,7 @@
       
             @for(; i < k; i++)
             {
-                ViewBag.Number = i;
-                @Html.Partial("_PostItem");
+                @Html.Partial("_PostItem", @Model.Posts[i]);
             }
             
         </div>
@@ -63,8 +58,7 @@
 
             @for (; i < @Model.TotalPostsForPage; i++)
             {
-                ViewBag.Number = i;
-                @Html.Partial("_PostItem");
+                @Html.Partial("_PostItem", @Model.Posts[i]);
             }
            
         </div>

@@ -1,0 +1,11 @@
+﻿@using Domain.Entities
+@using MVCBlog.Helpers
+@model IList<Category>
+
+
+    @foreach (var category in @Model)
+    {
+        <li><a href="/posts/@category.UrlSlug">@category.Name</a></li>
+    }
+
+

@@ -1,0 +1,6 @@
+﻿@model MVCBlog.Models.CategoryViewModel
+
+<div class="addInfo">
+    <h1>Latest posts on "@Model.Category.Name":</h1>
+</div>
+@Html.Partial("_List", @Model)

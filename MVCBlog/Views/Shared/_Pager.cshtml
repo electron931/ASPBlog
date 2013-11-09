@@ -1,9 +1,12 @@
-﻿@model MVCBlog.Models.PostViewModel
+﻿@model MVCBlog.Models.BaseViewModel
 
 @{
     int totalPages = @Model.TotalPosts / @Model.PageLimit;
     if ((@Model.TotalPosts % @Model.PageLimit) != 0)
         totalPages += 1;
+
+    if (@Model.TotalPosts <= @Model.PageLimit)
+        return;
 }
 
 @*
@@ -11,13 +14,14 @@
     they have no effect on the external parts of the app
 *@
 
+
 @if (totalPages > 8)
 {
     <div class="pagination">
         <ol>
             @if (ViewBag.Page != 1)
             {
-                <li>@Html.ActionLink("← prev", "Index", "Home", new { page = ViewBag.Page - 1 }, new { title = "prev" })</li>
+                <li>@Html.ActionLink("← prev", null, null, new { page = ViewBag.Page - 1 }, new { title = "prev" })</li>
             }
             else 
             {
@@ -25,7 +29,7 @@
             }
             @if (ViewBag.Page < totalPages)
             {
-                <li>@Html.ActionLink("next →", "Index", "Home", new { page = ViewBag.Page + 1 }, new { title = "next" })</li>
+                <li>@Html.ActionLink("next →", null, null, new { page = ViewBag.Page + 1 }, new { title = "next" })</li>
             }
             else 
             {
@@ -35,7 +39,7 @@
         <ul>
             @if (totalPages > 9 && ViewBag.Page > 5)
             {
-                <li>@Html.ActionLink("←", "Index", "Home", new { page = 1 }, new { title = "First Page" })</li>
+                <li>@Html.ActionLink("←", null, null, new { page = 1 }, new { title = "First Page" })</li>
             }
             @if (ViewBag.Page > 4 && ViewBag.Page < totalPages - 4)
             {
@@ -47,11 +51,11 @@
                     }
                     if (i != ViewBag.Page)
                     {
-                        <li>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                        <li>@Html.ActionLink(i.ToString(), null, null, new { page = i }, null)</li>
                     }
                     else 
                     {
-                        <li class="currentPage">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                        <li class="currentPage">@Html.ActionLink(i.ToString(), null, null, new { page = i }, null)</li>
                     }
                  }
              }
@@ -63,11 +67,11 @@
                      {
                          if (i != ViewBag.Page)
                          {
-                             <li>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                             <li>@Html.ActionLink(i.ToString(), null, null, new { page = i }, null)</li>
                          }
                          else 
                          {
-                             <li class="currentPage">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                             <li class="currentPage">@Html.ActionLink(i.ToString(), null, null, new { page = i }, null)</li>
                          }
                      }
                  }
@@ -77,11 +81,11 @@
                     {
                         if (i != ViewBag.Page)
                         {
-                            <li>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                            <li>@Html.ActionLink(i.ToString(), null, null, new { page = i }, null)</li>
                         }
                         else 
                         {
-                            <li class="currentPage">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                            <li class="currentPage">@Html.ActionLink(i.ToString(), null, null, new { page = i }, null)</li>
                         }
                     }
                  }
@@ -90,7 +94,7 @@
        
              @if (ViewBag.Page < totalPages - 4)
              {
-                 <li>@Html.ActionLink("→", "Index", "Home", new { page = totalPages }, new { title = "Last Page" })</li>
+                 <li>@Html.ActionLink("→", null, null, new { page = totalPages }, new { title = "Last Page" })</li>
              }
         
         </ul>
@@ -102,7 +106,7 @@ else
         <ol>
             @if (ViewBag.Page != 1)
             {
-                <li>@Html.ActionLink("← prev", "Index", "Home", new { page = ViewBag.Page - 1 }, new { title = "prev" })</li>
+                <li>@Html.ActionLink("← prev", null, null, new { page = ViewBag.Page - 1 }, new { title = "prev" })</li>
             }
             else 
             {
@@ -110,7 +114,7 @@ else
             }
             @if (ViewBag.Page < totalPages)
             {
-                <li>@Html.ActionLink("next →", "Index", "Home", new { page = ViewBag.Page + 1 }, new { title = "next" })</li>
+                <li>@Html.ActionLink("next →", null, null, new { page = ViewBag.Page + 1 }, new { title = "next" })</li>
             }
             else 
             {
@@ -122,11 +126,11 @@ else
             {
                 if (i != ViewBag.Page)
                 {
-                   <li>@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                   <li>@Html.ActionLink(i.ToString(), null, null, new { page = i }, null)</li>
                 }
                 else 
                 {
-                   <li class="currentPage">@Html.ActionLink(i.ToString(), "Index", "Home", new { page = i }, null)</li>
+                   <li class="currentPage">@Html.ActionLink(i.ToString(), null, null, new { page = i }, null)</li>
                 }
             }     
         </ul>

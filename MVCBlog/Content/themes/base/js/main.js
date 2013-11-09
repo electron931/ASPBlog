@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+    $.ajax({
+        url: '/category/categories',
+        dataType: 'html',
+        success: function (data) {
+            $('.categories').html(data);
+        }
+    });
+
     var slides = [$(".slider div ul.slides li.first_slide"),
 				   $(".slider div ul.slides li.second_slide"),
 				   $(".slider div ul.slides li.third_slide")];

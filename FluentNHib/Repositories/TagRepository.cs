@@ -4,7 +4,7 @@ using NHibernate;
 using NHibernate.Linq;
 using Domain.IRepositories;
 using Domain.Entities;
-
+using System;
 
 namespace FluentNHib.Repositories
 {

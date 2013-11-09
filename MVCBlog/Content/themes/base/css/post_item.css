@@ -1,0 +1,259 @@
+﻿
+.columns {
+    padding:0 15px;
+    margin-bottom:30px
+}
+
+p {
+    margin-top: 30px;
+}
+
+#main .columns {
+    padding:0
+}
+#leftContent {
+    float:left;
+    margin-left:-330px;
+    width:100%
+}
+.post_item {
+    padding:30px 50px;
+    border-bottom-right-radius:0;
+    border-bottom-left-radius:0
+}
+.post_meta {
+    background:none;
+    border:none;
+    margin-bottom:20px;
+    padding:0
+}
+#leftContent .inner {
+    margin-left:330px
+}
+.masonry-brick {
+    width:100%;
+    float:none;
+    padding:0 14px;
+    margin-bottom:14px
+}
+
+@media only screen and (max-width: 767px) { 
+    .post_item {
+        padding:14px
+    }  
+    .post-body img {
+        max-width:100%
+    }
+}
+
+.row .twelve {
+    width:100%
+}
+.container {
+    width:1060px;
+    max-width:100%;
+    margin:30px auto 0 auto
+}
+.row .column,.row .columns {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box
+}
+.row {
+    max-width:100%;
+    margin:0 auto
+}
+.row .row {
+    width:auto;
+    max-width:none;
+    min-width:0;
+    margin:0 -15px
+}
+.column,.columns {
+    float:left;
+    min-height:1px;
+    padding:0 15px;
+    position:relative;
+    margin-bottom:30px
+}
+.column.end,.columns.end {
+    float:right
+}
+.column.wrapper, .columns.wrapper {
+    margin-bottom:0
+}
+.row:before,.row:after {
+    content:" ";
+    display:table
+}
+.row:after {
+    clear:both
+}
+img {
+    max-width:100%;
+    height:auto;
+    -ms-interpolation-mode:bicubic
+}
+object,embed,iframe {
+    max-width:100%
+}
+
+@media only screen and (max-width: 959px) {
+	.row {
+        margin:0 -10px
+	}
+	.column,.columns {
+        padding:0 10px;
+        margin-bottom:20px
+	}
+	.top_wrapper {
+        margin-bottom:20px
+	}
+	#header-wrapper {
+        padding-top:20px
+	}
+	#header-wrapper .socials {
+        display:none
+	}
+	#top_menu {
+        right:10px
+	}
+	#top_menu .sf-menu i {
+        display:none
+	}
+	#leftContent {
+        width:auto;
+        float:none;
+        margin:0
+	}
+	#leftContent .inner {
+        margin:0
+	}
+	.post_content {
+        margin:0 -10px
+	}
+	.post_single {
+        margin-bottom:20px
+	}
+	#sidebar-wrapper {
+        display:none
+	}
+   	#footer {
+        padding-top:20px
+   	}
+}	
+
+@media only screen and (max-width: 767px) {
+	.row {
+        width:auto;
+        max-width:none;
+        min-width:0;
+        margin:0 -10px
+	}
+	.container {
+        width:auto;
+        max-width:500px;
+        margin:0 auto;
+        min-width:0
+	}
+	#post_grids .column, #post_grids .columns {
+        width:100%;
+        float:none;
+        padding:0 14px;
+        margin-bottom:14px
+	}
+    .column:last-child, .columns:last-child {
+        float:none
+    }
+	[class*="column"] + [class*="column"]:last-child {
+        float:none
+	}
+	.column:before,.columns:before,.column:after,.columns:after {
+        content:"";
+        display:table
+	}
+	.column:after,.columns:after {
+        clear:both
+	}
+	.top_wrapper {
+        margin-bottom:14px
+	}
+	#header-wrapper {
+        padding-top:14px
+	}
+	#header-wrapper .header_left, #header-wrapper .header_right {
+        float:none; 
+        width:auto
+	}
+	#header-wrapper .header_left {
+        margin-bottom:30px
+	}
+	#top_menu {
+        position:relative;
+        background-color:#06F;
+        right:0
+	}
+	#header {
+        float:none;
+        text-align:center;
+        margin:0;
+        margin-bottom:10px
+	}
+	#header img {
+        display:inline;
+        margin:0 auto
+	}
+	#top_menu {
+        float:none;
+        width:auto
+	}
+	#top_menu .sf-menu,.header_search {
+        display:none
+	}
+	#top_menu span.nav_select,.select_menu {
+        display:block
+	}
+	#leftContent {
+        width:auto;
+        float:none;
+        margin:0
+	}
+	#leftContent .inner {
+        margin:0
+	}
+	.white_box .white_box_inner {
+        padding:10px
+	}
+	.slider .caption_wrapper {
+        display:none
+	}
+	.slider .caption,.slider .flex-direction-nav {
+        display:none
+	}
+	.post_item_inner,.post_single_inner {
+        padding:14px
+	}
+	.post_single {
+        margin-bottom:14px
+	}
+	.social_share,.post_author {
+        display:none
+	}
+	#related-posts ul li {
+        width:50%
+	}
+	#footer {
+        padding-top:14px
+	}
+}
+
+@media only screen and (max-width: 460px) {
+    .related_posts .rp_col { 
+        float: none; 
+        width:auto; 
+    }
+}
+		
+#sidebar-wrapper {
+	display:block;
+}

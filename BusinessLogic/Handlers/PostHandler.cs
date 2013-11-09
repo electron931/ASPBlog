@@ -18,19 +18,19 @@ namespace BusinessLogic.Handlers
             return rep.Posts();
         }
 
-        public IList<Post> PostsForPage(int pageNumber, int pageSize)
+        public IList<Post> PostsForPage(int pageNumber, int pageLimit)
         {
-            return rep.PostsForPage(pageNumber, pageSize);
+            return rep.PostsForPage(pageNumber, pageLimit);
         }
 
-        public IList<Post> PostsForTag(string tagSlug)
+        public IList<Post> PostsForTag(string tagSlug, int pageNumber, int pageLimit)
         {
-            return rep.PostsForTag(tagSlug);
+            return rep.PostsForTag(tagSlug, pageNumber, pageLimit);
         }
 
-        public IList<Post> PostsForCategory(string categorySlug)
+        public IList<Post> PostsForCategory(string categorySlug, int pageNumber, int pageLimit)
         {
-            return rep.PostsForCategory(categorySlug);
+            return rep.PostsForCategory(categorySlug, pageNumber, pageLimit);
         }
 
         public IList<Post> PostsForSearch(string search)
@@ -76,6 +76,11 @@ namespace BusinessLogic.Handlers
         public Post Post(int year, int month, string titleSlug)
         {
             return rep.Post(year, month, titleSlug);
+        }
+
+        public Post Post(string categorySlug, string postSlug)
+        {
+            return rep.Post(categorySlug, postSlug);
         }
 
         public Post Post(int id)
