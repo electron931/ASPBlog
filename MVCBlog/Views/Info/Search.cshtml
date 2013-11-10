@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Search result " + ViewBag.Search;
+}
+
+@model MVCBlog.Models.PostViewModel
+
+<div class="addInfo">
+    <h1>Search result "@ViewBag.Search":</h1>
+</div>
+
+@Html.Partial("_List", @Model)

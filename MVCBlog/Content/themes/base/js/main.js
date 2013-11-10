@@ -90,4 +90,11 @@ $(document).ready(function () {
 
     setInterval(nextSlide, 5000);
 
+    /*
+    $("#mainmenu li").click(function () {
+        $(".current-menu-item").removeClass("current-menu-item");
+        $(this).addClass("current-menu-item");
+        $.cookie('current-menu-item', $("#mainmenu li.current-menu-item a").html());
+    });
+    */
 });

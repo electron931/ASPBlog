@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -175,6 +176,7 @@
     <Content Include="Content\themes\base\images\youtube.png" />
     <Content Include="Content\themes\base\js\main.js" />
     <Content Include="Content\themes\base\js\vendor\jquery-1.10.2.min.js" />
+    <Content Include="Content\themes\base\js\vendor\jquery.cookie.js" />
     <Content Include="Content\themes\base\js\vendor\modernizr-2.6.2.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -249,6 +251,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Categories.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\Contacts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\About.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Comments.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

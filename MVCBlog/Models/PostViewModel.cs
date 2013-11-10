@@ -17,5 +17,15 @@ namespace MVCBlog.Models
             TotalPosts = _post.TotalPosts();
         }
 
+        public PostViewModel(PostHandler _post, string search, int page, int pageLimit)
+            : base(_post, page, pageLimit)
+        {
+            Posts = _post.PostsForSearch(search, page - 1, pageLimit);
+            TotalPostsForPage = Posts.Count;
+            TotalPosts = _post.TotalPostsForSearch(search);
+        }
+
+        
+
     }
 }

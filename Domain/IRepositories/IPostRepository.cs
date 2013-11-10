@@ -10,7 +10,7 @@ namespace Domain.IRepositories
         IList<Post> PostsForPage(int pageNumber, int pageLimit);
         IList<Post> PostsForTag(string tagSlug, int pageNumber, int pageLimit);
         IList<Post> PostsForCategory(string categorySlug, int pageNumber, int pageLimit);
-        IList<Post> PostsForSearch(string search);
+        IList<Post> PostsForSearch(string search, int pageNumber, int pageLimit);
         IList<Post> UserPosts(int userId);
 
         int TotalPosts(bool checkIsPublished = true);

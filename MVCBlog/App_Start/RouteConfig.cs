@@ -32,6 +32,24 @@ namespace MVCBlog
             );
 
             routes.MapRoute(
+                name: "Contacts",
+                url: "contacts",
+                defaults: new { controller = "Info", action = "Contacts" }
+            );
+
+            routes.MapRoute(
+                name: "About",
+                url: "about",
+                defaults: new { controller = "Info", action = "About" }
+            );
+
+            routes.MapRoute(
+                name: "Search",
+                url: "search",
+                defaults: new { controller = "Info", action = "Search" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Post", action = "Index", id = UrlParameter.Optional }

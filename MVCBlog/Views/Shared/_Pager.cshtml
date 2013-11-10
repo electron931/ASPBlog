@@ -21,7 +21,7 @@
         <ol>
             @if (ViewBag.Page != 1)
             {
-                <li>@Html.ActionLink("← prev", null, null, new { page = ViewBag.Page - 1 }, new { title = "prev" })</li>
+                <li>@Html.ActionLink("← prev", HttpContext.Current.Request.Url.PathAndQuery, new { page = ViewBag.Page - 1 }, new { title = "prev" })</li>
             }
             else 
             {

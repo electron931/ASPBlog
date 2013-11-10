@@ -1,0 +1,44 @@
+﻿@using Domain.Entities
+@using BusinessLogic
+@model IList<Comment>
+
+<div class="comments" id="comments">
+    <h4>@ViewBag.TotalCommentsForPost comments:</h4>
+
+@if (ViewBag.TotalCommentsForPost != 0)
+{
+    <div class="comments_wrapper">
+
+    @foreach (var comment in @Model)
+    {
+	    <div style="margin-bottom: 20px; border-bottom: 1px solid #EEE;">
+            <a style="margin-right: 15px">@comment.User.Login</a>
+            <a>@comment.Created.ToConfigLocalTime()</a>
+            <div style="margin-top: 5px">@comment.Text</div>
+	    </div>
+    }
+
+    </div>
+}
+
+
+    <p class="comment-footer"></p>
+    <div id="comment-form">
+        <p>Share your comment:</p>
+        <br />
+        <form action="/comment-iframe.do" method="POST">
+            <div id="commentsHolder">
+                <textarea style="width: 100%; margin: auto;" name="commentBody" rows="6" cols="50" id="commentBodyField" placeholder="Enter your comment..."></textarea>
+                <br><br>
+            </div>
+            <div id="postCommentButtonHolder" class="postCommentButtonHolder">
+                <div id="subscribeButtonHolder" style="display: block;">
+                    <span class="checkboxLabel"></span>
+                </div>
+                <input type="button" id="postCommentSubmit" name="postCommentSubmit" onclick="BLOG_CMT_onPost()" value="Publish" class="button" style="background-color: #4D90F0;">
+                <input type="button" id="postCommentPreview" name="postCommentPreview" onclick="return BLOG_CMT_onPreview()" value="Preview" class="button" style="background-color: #4D90F0;">
+                <span id="empty-error"></span><span id="body-error"></span>
+            </div>
+        </form>
+    </div>
+</div>

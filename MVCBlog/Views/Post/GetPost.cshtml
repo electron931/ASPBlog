@@ -1,6 +1,12 @@
 ﻿@model Domain.Entities.Post
 @using MVCBlog.Helpers
-
+@using BusinessLogic.Handlers
+@using Domain.Entities
+@{
+    var _comment = new CommentHandler();
+    IList<Comment> comments = _comment.CommentsForPost(@Model.Id);
+    ViewBag.TotalCommentsForPost = _comment.TotalCommentsForPost(@Model.Id);
+}
 <style>
     @Html.EmbedCss("~/Content/themes/base/css/post_item.css")
 </style>
@@ -12,7 +18,7 @@
 			<div id="leftContent">
 				<div class="inner">
 					<div class="main section" id="main">
-						<div class="widget Blog" id="Blog1">
+						<div class="widget Blog">
 							<div class="four columns post_col masonry-brick">
 								<div class="post_item">
 									<h1>@Model.Title</h1>
@@ -23,9 +29,9 @@
 									    <span class="time">@Model.PostedOn.ToShortDateString()</span>
 									    <span class="comment">
 									        <a class="comment-link"
-                                               href="http://sight-soratemplates.blogspot.in/2013/06/lorem-ipsum-dolor-sit-amet_6010.html#comment-form">
+                                               href="#comments">
                                              
-									            comments</a>
+									           @ViewBag.TotalCommentsForPost comments</a>
 									    </span>
 									</div>
 									<div class="post-body">
@@ -40,6 +46,7 @@
 									</div>
 								</div>
                              </div>
+                                @Html.Partial("_Comments", comments)
                          </div>
                      </div>
                  </div>
@@ -47,3 +54,4 @@
         </div>
     </div>
 </div>
+

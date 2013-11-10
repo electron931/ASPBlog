@@ -65,12 +65,14 @@ namespace FluentNHib.Repositories
             return query.ToFuture().ToList();
         }
 
-        public IList<Post> PostsForSearch(string search)
+        public IList<Post> PostsForSearch(string search, int pageNumber, int pageLimit)
         {
             var query = _session.Query<Post>()
                            .Where(p => p.Published && (p.Title.Contains(search) ||
                                p.Category.Name.Equals(search) || p.Tags.Any(t => t.Name.Equals(search))))
                            .OrderByDescending(p => p.PostedOn)
+                           .Skip(pageNumber * pageLimit)
+                           .Take(pageLimit)
                            .Fetch(p => p.Category);
 
             query.FetchMany(p => p.Tags).ToFuture();

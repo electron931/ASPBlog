@@ -1502,6 +1502,10 @@ object, embed, iframe {
     margin: 30px auto 0 auto;
 }
 
+.comments_wrapper {
+    padding: 20px;
+}
+
 @media only screen and (max-width: 767px) {
 	.megacolumn {
 		width:100%;
@@ -1521,5 +1525,5 @@ object, embed, iframe {
     }
 }
 
-.
+
 

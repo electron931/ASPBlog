@@ -30,7 +30,7 @@
 							<div class="header_right">
 								<div class="menu-navigation-container" id="top_menu">
 									<ul class="sf-menu sf-js-enabled sf-shadow" id="mainmenu">
-										<li class="current-menu-item"><a href="#">Homepage</a></li>
+										<li class="current-menu-item">@Html.ActionLink("Homepage", "Index", "Post")</li>
 										<li><a href="#" class="sf-with-ul">Info<span class="sf-sub-indicator"> »</span></a>
 											<ul class="sub-menu" style="display: none; visibility: hidden;">
 												<li><a href="#" class="sf-with-ul">Categories
@@ -44,8 +44,8 @@
 												<li><a href="#">Read this</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Contacts</a></li>
-										<li><a href="#">About</a></li>
+										<li>@Html.ActionLink("Contacts", "Contacts", "Info")</li>
+										<li>@Html.ActionLink("About", "About", "Info")</li>
 									</ul>
 									
 									<select class="select_menu" title="Navigation ..." style="z-index: 10; opacity: 0;">
@@ -75,10 +75,11 @@
 									<div class="header_search">
 										<div class="search_zoom search_btn"></div>
 										<div class="search_box">
-											<form action="/search" id="searchform" method="get">
-												<input class="search_input" id="s" name="q"
+											@using(Html.BeginForm("Search", "Info", FormMethod.Get, new { id = "searchform" }))
+                                            {
+												<input class="search_input" id="s" name="searchText"
 													   placeholder="Type &amp; hit enter to search" type="text">
-											</form>
+											}
 										</div>
 									</div>
 								</div>

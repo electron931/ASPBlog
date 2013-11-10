@@ -18,7 +18,7 @@ namespace FluentNHib.Repositories
 
         public IList<Comment> CommentsForPost(int postId)
         {
-            return _session.Query<Comment>().Where(x => x.Post.Id == postId).ToList();
+            return _session.Query<Comment>().Where(x => x.Post.Id == postId).OrderByDescending(p => p.Created).ToList();
         }
 
         public IList<Comment> UserComments(int userId)

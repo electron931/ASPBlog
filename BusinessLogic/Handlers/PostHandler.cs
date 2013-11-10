@@ -33,9 +33,9 @@ namespace BusinessLogic.Handlers
             return rep.PostsForCategory(categorySlug, pageNumber, pageLimit);
         }
 
-        public IList<Post> PostsForSearch(string search)
+        public IList<Post> PostsForSearch(string search, int pageNumber, int pageLimit)
         {
-            return rep.PostsForSearch(search);
+            return rep.PostsForSearch(search, pageNumber, pageLimit);
         }
 
         public IList<Post> UserPosts(int userId)
