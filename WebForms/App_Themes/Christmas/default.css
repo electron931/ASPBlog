@@ -1,0 +1,22 @@
+﻿#body {
+    background-color: #555;
+}
+
+h1, p, a, a:link, a:hover, a:visited, .post_item h1 a, .author, .read_more, .post h1, .comments_count, .contact_message {
+    color: #fff;
+}
+
+.footer_copy {
+    color: #E74C3C;
+    font-weight: bold;
+}
+
+.post_image {
+    box-shadow: 0 0 20px rgba(255,255,255,0.5); 
+}
+
+footer {
+    background-image: url("Images/snow_footer.gif");
+    background-repeat: repeat-x;
+    box-shadow: 0 0 20px rgba(255,255,255,0.5); 
+}

@@ -19,7 +19,7 @@
 				<div class="inner">
 					<div class="main section" id="main">
 						<div class="widget Blog">
-							<div class="four columns post_col masonry-brick">
+							<div class="columns masonry-brick">
 								<div class="post_item">
 									<h1>@Model.Title</h1>
 									<div class="post_meta">
@@ -36,7 +36,7 @@
 									</div>
 									<div class="post-body">
 										<div class="separator" style="clear: both; text-align: center;">
-											<a href="@Url.Content(@Model.Image)"><img border="0" src="@Url.Content(@Model.Image)"></a>
+											<a href="@Url.Content("~/Content/themes/base/images/posts/" + @Model.Image)"><img border="0" src="@Url.Content("~/Content/themes/base/images/posts/" + @Model.Image)"></a>
 										</div>
 										<div>@Html.Raw(@Model.Description)</div>
 									</div>
@@ -46,7 +46,7 @@
 									</div>
 								</div>
                              </div>
-                                @Html.Partial("_Comments", comments)
+                             @Html.Partial("_Comments", comments)
                          </div>
                      </div>
                  </div>
