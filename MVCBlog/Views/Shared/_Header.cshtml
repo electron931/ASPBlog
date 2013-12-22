@@ -1,4 +1,4 @@
-﻿       
+﻿@using System.Web.Mvc;
 
         <div class="top_wrapper">
 			<div id="header-wrapper">
@@ -83,10 +83,34 @@
 										</div>
 									</div>
 								</div>
+                                <div class="login_wrapper">
+                                <div class="login_icon">
+                
+                                </div>
+                                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                    {
+                                        <a href="" class="user_name">@HttpContext.Current.User.Identity.Name</a>
+                                    }
+                                <div class="sign_in invisible">  
+                                    <div class="sign_in_inner">
+                                        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                        {
+                                            <a href="/logout" class="sign_in_inner_first">Sign out</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/login" class="sign_in_inner_first">Sign in</a>
+                                        }
+                                        <br />
+                                        <a href="/register">Register</a>
+                                    </div>
+                                </div>
 							</div>
+                            </div>
 							<div class="clear"></div>
 						</div>
 					</div>
 				</div>
 			</div>
+            
         </div>

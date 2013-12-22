@@ -1,0 +1,25 @@
+﻿
+
+<div class="container">
+	<div class="row">
+		<div class="twelve columns">
+				<div class="inner">
+					<div class="main section" id="main">
+						<div class="widget Blog" id="Blog1">
+							<div class="four columns post_col masonry-brick">
+								<form action="/login" method="post">
+                                    <fieldset>
+                                        <legend>Sign in</legend>
+                                        <p><label for="userName">UserName*</label><input type="text" id="userName" name="userName" /></p>
+                                        <p><label for="password">Password*</label><input type="password" id="password" name="password" /></p>
+                                        @Html.AntiForgeryToken()
+                                        <p><input type="submit" name="submit" value="Send" /></p>
+                                    </fieldset>
+                                </form>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+        </div>
+    </div>
+</div>

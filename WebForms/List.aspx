@@ -9,7 +9,7 @@
                <h1><a href="Post.aspx?id=<%# Item.Id %>"><%# Item.Title  %></a></h1>
                <p><%# Item.ShortDescription %></p>
                <p>
-                  <span class="author"><%# Item.Author.Login %></span>
+                  <span class="author"><%# Item.Author.UserName %></span>
                   <span class="date"><%# Item.PostedOn.ToShortDateString() %></span>
                </p>
                <p><a href="Post.aspx?id=<%# Item.Id %>">Read more...</a></p>

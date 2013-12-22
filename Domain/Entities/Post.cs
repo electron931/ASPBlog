@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 
@@ -39,6 +40,7 @@ namespace Domain.Entities
         public virtual IList<Tag> Tags
         { get; set; }
 
+        [JsonIgnore]
         public virtual IList<Comment> Comments
         { get; set; }
 

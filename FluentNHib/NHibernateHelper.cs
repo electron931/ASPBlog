@@ -5,6 +5,7 @@ using FluentNHib.Mappings;
 using NHibernate.Tool.hbm2ddl;
 using System;
 using NLog;
+using NHibernate.Dialect;
 
 
 namespace FluentNHib
@@ -36,6 +37,7 @@ namespace FluentNHib
                                      .Database("aspblog_db")
                                      .Username("root")
                                      .Password(""))
+                                  .Dialect<MySQL5Dialect>()
                                   .ShowSql()
                     )
                     .Mappings(m =>

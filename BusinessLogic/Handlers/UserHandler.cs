@@ -58,6 +58,16 @@ namespace BusinessLogic.Handlers
             return rep.User(id);
         }
 
+        public User User(string userName)
+        {
+            return rep.User(userName);
+        }
+
+        public User User(string userName, string password)
+        {
+            return rep.User(userName, password);
+        }
+
         public override void Delete(int id)
         {
             rep.Delete(id);

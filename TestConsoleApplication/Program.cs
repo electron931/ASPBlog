@@ -43,8 +43,11 @@ namespace TestConsoleApplication
 
             IList<User> users = userHandler.AuthorUsers();
             foreach (var user in users)
-                Console.WriteLine(user.Id + ". " + user.Login + " " + user.Password);
+                Console.WriteLine(user.Id + ". " + user.UserName + " " + user.Password);
 
+            Post superPost = new Post { Author = userHandler.User(3), Category = catHandler.Category(2), Title = "Test", ShortDescription = "Test", Description = "Test", Image = "Test", Published = true, PostedOn = DateTime.Now, UrlSlug = "Test", Tags = tagHandler.Tags() };
+
+            postHandler.Add(superPost);
 
             logger.Debug("Application loaded succesfully");
             

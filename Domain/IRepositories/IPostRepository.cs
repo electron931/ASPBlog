@@ -11,15 +11,15 @@ namespace Domain.IRepositories
         IList<Post> PostsForTag(string tagSlug, int pageNumber, int pageLimit);
         IList<Post> PostsForCategory(string categorySlug, int pageNumber, int pageLimit);
         IList<Post> PostsForSearch(string search, int pageNumber, int pageLimit);
-        IList<Post> UserPosts(int userId);
+        IList<Post> UserPosts(int userId, int pageNumber, int pageSize, string sortColumn, bool sortByAscending);
 
         int TotalPosts(bool checkIsPublished = true);
         int TotalPostsForCategory(string categorySlug);
         int TotalPostsForTag(string tagSlug);
         int TotalPostsForSearch(string search);
-        int TotalUserPosts(int userId);
+        int TotalUserPosts(int userId, bool checkIsPublished = true);
 
-        IList<Post> Posts(string sortColumn, bool sortByAscending);
+        IList<Post> Posts(int pageNumber, int pageSize, string sortColumn, bool sortByAscending);
         Post Post(int year, int month, string titleSlug);
         Post Post(string categorySlug, string postSlug);
         Post Post(int id);

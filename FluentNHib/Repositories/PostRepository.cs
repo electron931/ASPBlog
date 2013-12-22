@@ -14,7 +14,7 @@ namespace FluentNHib.Repositories
         public IList<Post> Posts()
         {
             var query = _session.Query<Post>()
-                                .Where(p => p.Published)
+                                //.Where(p => p.Published)
                                 .OrderByDescending(p => p.PostedOn)
                                 .Fetch(p => p.Category);
 
@@ -80,9 +80,108 @@ namespace FluentNHib.Repositories
             return query.ToFuture().ToList();
         }
 
-        public IList<Post> UserPosts(int userId)
+        public IList<Post> UserPosts(int userId, int pageNumber, int pageSize, string sortColumn, bool sortByAscending)
         {
-            return _session.Query<Post>().Where(p => p.Author.Id == userId).OrderBy(p => p.PostedOn).ToList();
+            IQueryable<Post> query;
+
+            switch (sortColumn)
+            {
+                case "Title":
+                    if (sortByAscending)
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderBy(p => p.Title)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    else
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderByDescending(p => p.Title)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    break;
+                case "Published":
+                    if (sortByAscending)
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderBy(p => p.Published)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    else
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderByDescending(p => p.Published)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    break;
+                case "PostedOn":
+                    if (sortByAscending)
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderBy(p => p.PostedOn)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    else
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderByDescending(p => p.PostedOn)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    break;
+                case "Modified":
+                    if (sortByAscending)
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderBy(p => p.Modified)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    else
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderByDescending(p => p.Modified)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    break;
+                case "Category":
+                    if (sortByAscending)
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderBy(p => p.Category.Name)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    else
+                        query = _session.Query<Post>()
+                                 .Where(p => p.Author.Id == userId)
+                                 .OrderByDescending(p => p.Category.Name)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
+                                 .Fetch(p => p.Category);
+                    break;
+                default:
+                    query = _session.Query<Post>()
+                             .Where(p => p.Author.Id == userId)
+                             .OrderByDescending(p => p.PostedOn)
+                             .Skip(pageNumber * pageSize)
+                             .Take(pageSize)
+                             .Fetch(p => p.Category);
+                    break;
+            }
+
+            if (query == null)
+                return null;
+
+            query.FetchMany(p => p.Tags).ToFuture();
+
+            return query.ToFuture().ToList();
         }
 
         public int TotalPosts(bool checkIsPublished = true)
@@ -112,12 +211,13 @@ namespace FluentNHib.Repositories
                            .Count();
         }
 
-        public int TotalUserPosts(int userId)
+        public int TotalUserPosts(int userId, bool checkIsPublished = true)
         {
-            return _session.Query<Post>().Where(p => p.Author.Id == userId).Count();
+            return _session.Query<Post>().Where(p => p.Author.Id == userId).
+                                          Where(p => checkIsPublished || p.Published == true).Count();
         }
 
-        public IList<Post> Posts(string sortColumn, bool sortByAscending)
+        public IList<Post> Posts(int pageNumber, int pageSize, string sortColumn, bool sortByAscending)
         {
             IQueryable<Post> query;
 
@@ -127,55 +227,77 @@ namespace FluentNHib.Repositories
                     if (sortByAscending)
                         query = _session.Query<Post>()
                                  .OrderBy(p => p.Title)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     else
                         query = _session.Query<Post>()
                                  .OrderByDescending(p => p.Title)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     break;
                 case "Published":
                     if (sortByAscending)
                         query = _session.Query<Post>()
                                  .OrderBy(p => p.Published)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     else
                         query = _session.Query<Post>()
                                  .OrderByDescending(p => p.Published)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     break;
                 case "PostedOn":
                     if (sortByAscending)
                         query = _session.Query<Post>()
                                  .OrderBy(p => p.PostedOn)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     else
                         query = _session.Query<Post>()
                                  .OrderByDescending(p => p.PostedOn)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     break;
                 case "Modified":
                     if (sortByAscending)
                         query = _session.Query<Post>()
                                  .OrderBy(p => p.Modified)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     else
                         query = _session.Query<Post>()
                                  .OrderByDescending(p => p.Modified)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     break;
                 case "Category":
                     if (sortByAscending)
                         query = _session.Query<Post>()
                                  .OrderBy(p => p.Category.Name)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     else
                         query = _session.Query<Post>()
                                  .OrderByDescending(p => p.Category.Name)
+                                 .Skip(pageNumber * pageSize)
+                                 .Take(pageSize)
                                  .Fetch(p => p.Category);
                     break;
                 default:
                     query = _session.Query<Post>()
                              .OrderByDescending(p => p.PostedOn)
+                             .Skip(pageNumber * pageSize)
+                             .Take(pageSize)
                              .Fetch(p => p.Category);
                     break;
             }

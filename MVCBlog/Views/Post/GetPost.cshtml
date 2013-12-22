@@ -24,7 +24,7 @@
 									<h1>@Model.Title</h1>
 									<div class="post_meta">
 									    <span class="user">
-									        by <span style="color: #E74C3C;">@Model.Author.Login</span>
+									        by <span style="color: #E74C3C;">@Model.Author.UserName</span>
 									    </span>
 									    <span class="time">@Model.PostedOn.ToShortDateString()</span>
 									    <span class="comment">
@@ -46,6 +46,7 @@
 									</div>
 								</div>
                              </div>
+                             @{ViewBag.PostId = @Model.Id;}
                              @Html.Partial("_Comments", comments)
                          </div>
                      </div>

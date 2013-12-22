@@ -38,9 +38,9 @@ namespace BusinessLogic.Handlers
             return rep.PostsForSearch(search, pageNumber, pageLimit);
         }
 
-        public IList<Post> UserPosts(int userId)
+        public IList<Post> UserPosts(int userId, int pageNumber, int pageSize, string sortColumn, bool sortByAscending)
         {
-            return rep.UserPosts(userId);
+            return rep.UserPosts(userId, pageNumber, pageSize, sortColumn, sortByAscending);
         }
 
         public int TotalPosts(bool checkIsPublished = true)
@@ -63,14 +63,14 @@ namespace BusinessLogic.Handlers
             return rep.TotalPostsForSearch(search);
         }
 
-        public int TotalUserPosts(int userId)
+        public int TotalUserPosts(int userId, bool checkIsPublished = true)
         {
-            return rep.TotalUserPosts(userId);
+            return rep.TotalUserPosts(userId, checkIsPublished);
         }
 
-        public IList<Post> Posts(string sortColumn, bool sortByAscending)
+        public IList<Post> Posts(int pageNumber, int pageSize, string sortColumn, bool sortByAscending)
         {
-            return rep.Posts(sortColumn, sortByAscending);
+            return rep.Posts(pageNumber, pageSize, sortColumn, sortByAscending);
         }
 
         public Post Post(int year, int month, string titleSlug)

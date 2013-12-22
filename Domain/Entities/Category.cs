@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Domain.Entities
 {
@@ -14,6 +14,7 @@ namespace Domain.Entities
         public virtual string Description
         { get; set; }
 
+        [JsonIgnore]
         public virtual IList<Post> Posts
         { get; set; }
     }

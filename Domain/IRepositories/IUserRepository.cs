@@ -15,5 +15,7 @@ namespace Domain.IRepositories
         int TotalAuthorUsers();
         int TotalSubsciberUsers();
         User User(int id);
+        User User(string userName);
+        User User(string userName, string password);
     }
 }

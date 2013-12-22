@@ -12,7 +12,7 @@
     @foreach (var comment in @Model)
     {
 	    <div style="margin-bottom: 20px; border-bottom: 1px solid #EEE;">
-            <a style="margin-right: 15px">@comment.User.Login</a>
+            <a style="margin-right: 15px">@comment.User.UserName</a>
             <a>@comment.Created.ToConfigLocalTime()</a>
             <div style="margin-top: 5px">@comment.Text</div>
 	    </div>
@@ -23,22 +23,28 @@
 
 
     <p class="comment-footer"></p>
-    <div id="comment-form">
-        <p>Share your comment:</p>
-        <br />
-        <form action="/comment-iframe.do" method="POST">
-            <div id="commentsHolder">
-                <textarea style="width: 100%; margin: auto;" name="commentBody" rows="6" cols="50" id="commentBodyField" placeholder="Enter your comment..."></textarea>
-                <br><br>
-            </div>
-            <div id="postCommentButtonHolder" class="postCommentButtonHolder">
-                <div id="subscribeButtonHolder" style="display: block;">
-                    <span class="checkboxLabel"></span>
+
+    @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        <p>You must sign in to share your comment. <a href="/login">Sign in</a> or <a href="/register">Register</a></p>
+    }
+    else
+    {
+        <div id="comment-form">
+            <p>Share your comment:</p>
+            <br />
+            <form action="/addComment" method="post">
+                <div id="commentsHolder">
+                    <textarea style="width: 100%; margin: auto;" name="commentBody" rows="6" cols="50" id="commentBodyField" placeholder="Enter your comment..."></textarea>
+                    <br><br>
                 </div>
-                <input type="button" id="postCommentSubmit" name="postCommentSubmit" onclick="BLOG_CMT_onPost()" value="Publish" class="button" style="background-color: #4D90F0;">
-                <input type="button" id="postCommentPreview" name="postCommentPreview" onclick="return BLOG_CMT_onPreview()" value="Preview" class="button" style="background-color: #4D90F0;">
-                <span id="empty-error"></span><span id="body-error"></span>
-            </div>
-        </form>
-    </div>
+                <div id="postCommentButtonHolder" class="postCommentButtonHolder">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" value="@ViewBag.PostId" name="postId" />
+                    <input type="submit" name="postCommentSubmit" value="Publish" class="button" style="background-color: #4D90F0;">
+                    <span id="empty-error"></span><span id="body-error"></span>
+                </div>
+            </form>
+        </div>
+    }
 </div>

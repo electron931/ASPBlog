@@ -14,6 +14,36 @@ namespace MVCBlog
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Admin",
+                url: "admin",
+                defaults: new { controller = "Admin", action = "Admin" }
+            );
+
+            routes.MapRoute(
+                name: "addComment",
+                url: "addComment",
+                defaults: new { controller = "Post", action = "addComment" }
+            );
+
+            routes.MapRoute(
+                name: "Register",
+                url: "register",
+                defaults: new { controller = "Admin", action = "Register" }
+            );
+
+            routes.MapRoute(
+                name: "Logout",
+                url: "logout",
+                defaults: new { controller = "Admin", action = "Logout" }
+            );
+
+            routes.MapRoute(
+                name: "Login",
+                url: "login",
+                defaults: new { controller = "Admin", action = "Login" }
+            );
+
+            routes.MapRoute(
                 name: "BlogPost",
                 url: "posts/{categorySlug}/{postSlug}",
                 defaults: new { controller = "Post", action = "GetPost"}

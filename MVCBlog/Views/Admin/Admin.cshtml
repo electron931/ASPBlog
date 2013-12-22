@@ -1,0 +1,38 @@
+﻿@model MVCBlog.Models.UserModel
+@{
+    Layout = null;
+}
+
+<script src="@Url.Content("~/Content/themes/base/js/vendor/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Content/themes/base/js/vendor/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Content/themes/base/js/vendor/jquery.validate.unobtrusive.min.js")"></script>
+
+
+<div id="login-div">
+    <p>@ViewBag.AdminValidationError</p>
+    @Html.ValidationSummary(true)
+ 
+    @using (Html.BeginForm("AdminValidate", "Admin"))
+    {
+        <fieldset>
+            <legend>Login</legend>
+            <p>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </p>
+             
+            <p>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </p>
+ 
+            @Html.AntiForgeryToken()
+ 
+            <p>
+                <input type="submit" value="Login" />
+            </p>
+        </fieldset>
+    }
+</div>

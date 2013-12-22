@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 
 namespace Domain.Entities
@@ -23,6 +24,7 @@ namespace Domain.Entities
         public virtual User User
         { get; set; }
 
+        [JsonIgnore]
         public virtual Post Post
         { get; set; }
     }

@@ -16,7 +16,7 @@ namespace FluentNHib.Mappings
 
             Map(x => x.Description).Length(50000).Not.Nullable();
 
-            Map(x => x.Meta).Length(1000).Not.Nullable();
+            Map(x => x.Meta).Length(1000);
 
             Map(x => x.UrlSlug).Length(200).Not.Nullable();
 
@@ -28,9 +28,9 @@ namespace FluentNHib.Mappings
 
             Map(x => x.Modified);
 
-            References(x => x.Category).Column("CategoryId").Not.Nullable();
+            References(x => x.Category).Column("CategoryId").Cascade.SaveUpdate().Not.Nullable();
 
-            References(x => x.Author).Column("AuthorId").Not.Nullable();
+            References(x => x.Author).Column("AuthorId").Cascade.SaveUpdate().Not.Nullable();
 
             HasManyToMany(x => x.Tags).Table("PostTagMap");
         }

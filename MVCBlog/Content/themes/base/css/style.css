@@ -236,7 +236,7 @@ h1, h2, h3, h4, h5 {
 }
 .sf-menu li:hover ul,.sf-menu li.sfHover ul {
 	left:0;
-	top:3.1em;
+	top:3em;
 	z-index:99;
 }
 ul.sf-menu li:hover li ul,ul.sf-menu li.sfHover li ul {
@@ -1525,5 +1525,48 @@ object, embed, iframe {
     }
 }
 
+.login_icon {
+    background-image: url("../images/login_icon.png");
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 31px;
+    margin: 0 auto;
+    border-right: 20px;
+    z-index: 100;
+    cursor: pointer;
+    margin-top: -20px;
+}
 
+.sign_in {
+    width: 84px;
+    height: 38px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.sign_in_inner {
+    font-size: 12px;
+    text-align: center;
+}
+
+.sign_in_inner_first {
+    border-bottom: 1px solid #ccc;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.user_name {
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    text-align: center;
+}
+
+.login_wrapper {
+    width: 20%;
+    margin: 0 auto;
+}
 

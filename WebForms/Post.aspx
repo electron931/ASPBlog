@@ -23,7 +23,7 @@
                         </asp:ListView>
                     </div>
                     <p>
-                      <span class="author"><%# Item.Author.Login %></span>
+                      <span class="author"><%# Item.Author.UserName %></span>
                       <span class="date"><%# Item.PostedOn.ToShortDateString() %></span>
                    </p>
                     <p class="comments_count"><img src="Images/icon_comments.png" width="31" height="27" />
@@ -38,7 +38,7 @@
             <ItemTemplate>
                 <div class="comment_item">
                     <p>
-                        <span class="userName"><%# Item.User.Login %></span>
+                        <span class="userName"><%# Item.User.UserName %></span>
                         <span class="created"><%# Item.Created.ToShortDateString() %></span>
                     </p>
                     <p><%# Item.Text %></p>

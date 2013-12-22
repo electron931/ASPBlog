@@ -17,6 +17,7 @@ namespace MVCBlog.Controllers
         public PostController()
         {
             _post = new PostHandler();
+            
         }
 
         public ViewResult Index(int page = 1)
@@ -40,6 +41,26 @@ namespace MVCBlog.Controllers
             ViewBag.Title = post.Title;
 
             return View(post);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public RedirectResult addComment(string commentBody, int postId)
+        {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                UserHandler userHandler = new UserHandler();
+                User user = userHandler.User(HttpContext.User.Identity.Name);
+
+                Post post = _post.Post(postId);
+
+                Comment newComment = new Comment { Text = commentBody, Created = DateTime.Now, Post = post, User = user };
+
+                CommentHandler commentHandler = new CommentHandler();
+                commentHandler.Add(newComment);
+
+            }
+
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
     }
