@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace MVCBlog.Controllers.API
 {
@@ -98,8 +99,37 @@ namespace MVCBlog.Controllers.API
             "Description": null
         }
          * */
-        public HttpResponseMessage PutCategory(Category category)
+        public HttpResponseMessage PutCategory([Bind(Exclude = "Id")]Category category)
         {
+            //instead of Admin/AddCategory/
+            //test mode
+            string json;
+
+            try 
+            {
+                var id = _categoryHandler.Add(category);
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = id,
+                    success = true,
+                    message = "Category added successfully."
+                });
+
+                return Request.CreateResponse(HttpStatusCode.OK, json);
+            }
+            catch(Exception)
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to add the category."
+                });
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, json);
+            }
+
+            /*
             try
             {
                 _categoryHandler.Add(category);
@@ -109,6 +139,7 @@ namespace MVCBlog.Controllers.API
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Message = "Oops!" });
             }
+             * */
         }
 
         // DELETE /api/categories/{id}

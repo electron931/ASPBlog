@@ -433,7 +433,8 @@
         };
 
         var addOptions = {
-            url: '/Admin/AddCategory',
+            url: '/api/categories',
+            mtype: 'PUT',
 			width: 400,
             addCaption: 'Add Category',
             processData: "Saving...",
