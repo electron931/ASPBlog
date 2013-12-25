@@ -7,6 +7,7 @@
 <script src="@Url.Content("~/Content/themes/base/js/vendor/jquery.validate.min.js")"></script>
 <script src="@Url.Content("~/Content/themes/base/js/vendor/jquery.validate.unobtrusive.min.js")"></script>
 
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/themes/base/css/style.css")" />
 
 <div id="login-div">
     <p>@ViewBag.AdminValidationError</p>
@@ -31,7 +32,7 @@
             @Html.AntiForgeryToken()
  
             <p>
-                <input type="submit" value="Login" />
+                <input type="submit" value="Login" class="login_button button normal" />
             </p>
         </fieldset>
     }

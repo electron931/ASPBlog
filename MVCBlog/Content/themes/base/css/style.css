@@ -1570,3 +1570,19 @@ object, embed, iframe {
     margin: 0 auto;
 }
 
+#login-div {
+    width: 500px;
+    margin: 100px auto;
+}
+
+.sign_in_form {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.login_button {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 70px;
+}
+

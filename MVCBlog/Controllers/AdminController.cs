@@ -36,33 +36,23 @@ namespace MVCBlog.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
             {
-                if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    return Redirect(returnUrl);
-
-                return RedirectToAction("Manage");
+                return RedirectToAction("Index", "Post");
             }
-
-            ViewBag.ReturnUrl = returnUrl;
 
             return View();
         }
 
         [AllowAnonymous]
-        public ActionResult Register(string returnUrl)
+        public ActionResult Register()
         {
             if (User.Identity.IsAuthenticated)
             {
-                if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    return Redirect(returnUrl);
-
-                return RedirectToAction("Manage");
+                return RedirectToAction("Index", "Post");
             }
-
-            ViewBag.ReturnUrl = returnUrl;
 
             return View();
         }
@@ -71,6 +61,12 @@ namespace MVCBlog.Controllers
         public ActionResult Register(string userName, string password)
         {
             //place for validation
+            if (userName == "" || password == "")
+            {
+                ViewBag.Warning = "Please, fill both fields";
+                return View("Register");
+            }
+
             User user = _userHandler.User(userName);
             if (user != null)
             {
@@ -100,8 +96,13 @@ namespace MVCBlog.Controllers
         }
 
         [HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
-        public RedirectToRouteResult Login(string userName, string password)
+        public ActionResult Login(string userName, string password)
         {
+            if (userName == "" || password == "")
+            {
+                ViewBag.Warning = "Please, fill both fields";
+                return View("Login");
+            }
             var user = _userHandler.User(userName, password);
             if (user != null)
             {
@@ -125,7 +126,8 @@ namespace MVCBlog.Controllers
             }
             else
             {
-                return RedirectToAction("Contacts", "Info");
+                ViewBag.Warning = "This user does not exist!";
+                return View("Login");
             }
             
         }

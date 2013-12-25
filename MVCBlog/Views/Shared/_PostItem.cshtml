@@ -24,7 +24,7 @@
 		            <span class="time">@Model.PostedOn.ToConfigLocalTime()</span>
 	            </div>
 			    <div class="post_item_inner">
-			       <p>@Model.ShortDescription</p>
+			       @Html.Raw(@Model.ShortDescription)
 		           <a class="button normal"
                       rel="bookmark"
                       href="@Url.Action("GetPost", "Post", new 

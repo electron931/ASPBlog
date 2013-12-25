@@ -6,13 +6,14 @@
 					<div class="main section" id="main">
 						<div class="widget Blog" id="Blog1">
 							<div class="four columns post_col masonry-brick">
-								<form action="/register" method="post">
+								<form action="/register" method="post" class="sign_in_form">
+                                    <p>@ViewBag.Warning</p>
                                     <fieldset>
                                         <legend>Register</legend>
                                         <p><label for="userName">UserName*</label><input type="text" id="userName" name="userName" /></p>
                                         <p><label for="password">Password*</label><input type="password" id="password" name="password" /></p>
                                         @Html.AntiForgeryToken()
-                                        <p><input type="submit" name="submit" value="Send" /></p>
+                                        <p><input type="submit" name="submit" value="Send" class="login_button button normal" /></p>
                                     </fieldset>
                                 </form>
                                 <p>@ViewBag.AlreadyExists</p>

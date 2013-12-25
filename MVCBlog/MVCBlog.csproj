@@ -111,6 +111,10 @@
     <Compile Include="Account\CustomPrincipal.cs" />
     <Compile Include="Account\UserInfo.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\API\CategoriesController.cs" />
+    <Compile Include="Controllers\API\CommentsController.cs" />
+    <Compile Include="Controllers\API\PostsController.cs" />
+    <Compile Include="Controllers\API\TagsController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -590,6 +594,7 @@
     <Content Include="Content\themes\base\js\vendor\tiny_mce\utils\form_utils.js" />
     <Content Include="Content\themes\base\js\vendor\tiny_mce\utils\mctabs.js" />
     <Content Include="Content\themes\base\js\vendor\tiny_mce\utils\validate.js" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
